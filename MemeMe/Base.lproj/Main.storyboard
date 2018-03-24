@@ -31,7 +31,7 @@
                                     <barButtonItem systemItem="cancel" id="Kd0-89-rvc">
                                         <color key="tintColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                         <connections>
-                                            <action selector="cancelEdit:" destination="BYZ-38-t0r" id="Mat-86-0wV"/>
+                                            <action selector="cancelEdit:" destination="BYZ-38-t0r" id="4hW-wZ-BHz"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -105,7 +105,6 @@
                         <outlet property="bottomText" destination="mhb-ch-o7v" id="W6L-ku-nk6"/>
                         <outlet property="bottomToolbar" destination="ycN-6R-np7" id="7Ii-XU-xdw"/>
                         <outlet property="cameraButton" destination="eZr-gi-T99" id="ZnT-n2-4Vy"/>
-                        <outlet property="cancelEdit" destination="Kd0-89-rvc" id="z6B-tA-iNf"/>
                         <outlet property="imagePickerView" destination="j1t-tP-ctZ" id="uZG-gv-45k"/>
                         <outlet property="shareButton" destination="lJF-qs-OCl" id="92T-Np-FbR"/>
                         <outlet property="topText" destination="HXa-Zo-oXe" id="H7d-dh-a8b"/>

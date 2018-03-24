@@ -187,9 +187,16 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         
         return memedImage
     }
-    @IBAction func cancelEdit(_ sender: UIBarButtonItem){
-        dismiss(animated: true, completion: nil)
+    
+    @IBAction func cancelEdit(_ sender: Any) {
+        
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
+        
+        imagePickerView.image = UIImage()
+        
     }
+    
     
 }
 
