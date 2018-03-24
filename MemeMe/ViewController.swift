@@ -57,13 +57,31 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        let paragraphStyleToCenterText = NSMutableParagraphStyle()
+        paragraphStyleToCenterText.alignment = NSTextAlignment.center
+        
+        let memeTextAttributes: [String: Any] = [
+            NSAttributedStringKey.strokeColor.rawValue : UIColor.black,
+            NSAttributedStringKey.foregroundColor.rawValue : UIColor.white,
+            NSAttributedStringKey.font.rawValue : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedStringKey.strokeWidth.rawValue : -3.0,
+            
+            NSAttributedStringKey.paragraphStyle.rawValue : paragraphStyleToCenterText
+            ]
+        
         textField.text = ""
         if textField == topText{
             view.frame.origin.y = 0
         }
+        
+        textField.defaultTextAttributes = memeTextAttributes
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        topText.adjustsFontSizeToFitWidth = true
+        bottomText.adjustsFontSizeToFitWidth = true
         subscribeToKeybordNotification()
     }
     
@@ -92,11 +110,17 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     @objc func keybordWillShow(_ notification: Notification){
-        view.frame.origin.y = -getKeybordHeight(notification)
+        if bottomText.isFirstResponder{
+            view.frame.origin.y = -getKeybordHeight(notification)
+        }
     }
     
     @objc func keybordWillHide(_ notification: Notification){
-        view.frame.origin.y = 0
+        
+        if bottomText.isFirstResponder{
+            view.frame.origin.y = 0
+        }
+        
     }
     
     func getKeybordHeight(_ notification:Notification) -> CGFloat {
@@ -107,6 +131,13 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     @IBAction func cameraAction(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     func subscribeToKeybordNotification(){
@@ -137,10 +168,6 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
-    }
-    
-    @IBAction func saveImage(_ sender: Any) {
-        let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
     }
     
     func generateMemedImage() -> UIImage {
