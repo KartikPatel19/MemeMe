@@ -29,7 +29,7 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
         let memeTextAttributes:[String: Any] = [
             NSAttributedStringKey.strokeColor.rawValue: UIColor.white,
