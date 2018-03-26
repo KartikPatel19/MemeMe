@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorVC.swift
 //  MemeMe
 //
 //  Created by kartik patel on 22/03/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class MemeEditorVC: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate{
     
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -31,22 +31,21 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         super.viewDidLoad()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        let memeTextAttributes:[String: Any] = [
-            NSAttributedStringKey.strokeColor.rawValue: UIColor.white,
-            NSAttributedStringKey.foregroundColor.rawValue: UIColor.black,
-            NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedStringKey.strokeWidth.rawValue: UIColor.red
-        ]
-        
-        topText.text = "TOP"
-        bottomText.text = "BOTTOM"
-        
         topText.delegate = self
         bottomText.delegate = self
+    }
+    
+    func customizeTextField(textField: UITextField, defaultText: String) {
+        let memeTextAttributes:[String:Any] = [
+            NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
+            NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+            NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedStringKey.strokeWidth.rawValue: -5
+        ]
         
-        topText.typingAttributes = memeTextAttributes
-        bottomText.typingAttributes = memeTextAttributes
-
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.text = defaultText
+        textField.textAlignment = .center
     }
     
     @IBAction func pickAnImage(_ sender: Any) {
@@ -57,35 +56,24 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        let paragraphStyleToCenterText = NSMutableParagraphStyle()
-        paragraphStyleToCenterText.alignment = NSTextAlignment.center
-        
-        let memeTextAttributes: [String: Any] = [
-            NSAttributedStringKey.strokeColor.rawValue : UIColor.black,
-            NSAttributedStringKey.foregroundColor.rawValue : UIColor.white,
-            NSAttributedStringKey.font.rawValue : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedStringKey.strokeWidth.rawValue : -3.0,
-            
-            NSAttributedStringKey.paragraphStyle.rawValue : paragraphStyleToCenterText
-            ]
-        
         textField.text = ""
         if textField == topText{
             view.frame.origin.y = 0
         }
         
-        textField.defaultTextAttributes = memeTextAttributes
-        
+        customizeTextField(textField: textField, defaultText: "")
+        customizeTextField(textField: textField, defaultText: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         topText.adjustsFontSizeToFitWidth = true
         bottomText.adjustsFontSizeToFitWidth = true
         subscribeToKeybordNotification()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         unsubscribeToKeybordNotification()
     }
     
@@ -95,18 +83,15 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imagePickerView.image = image
         }
         dismiss(animated: true, completion: nil)
-        
     }
     
     @objc func keybordWillShow(_ notification: Notification){
@@ -116,7 +101,6 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     @objc func keybordWillHide(_ notification: Notification){
-        
         if bottomText.isFirstResponder{
             view.frame.origin.y = 0
         }
@@ -171,7 +155,6 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     func generateMemedImage() -> UIImage {
-        
         topToolbar.isHidden = true
         bottomToolbar.isHidden = true
         
@@ -183,7 +166,6 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         
         topToolbar.isHidden = false
         bottomToolbar.isHidden = false
-        
         
         return memedImage
     }
