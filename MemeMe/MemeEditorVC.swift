@@ -20,12 +20,6 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
     
-    struct Meme {
-        let topText: String
-        let bottomText: String
-        let originalImage: UIImage
-        let memedImage: UIImage
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +42,6 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         textField.defaultTextAttributes = memeTextAttributes
         textField.text = defaultText
         textField.textAlignment = .center
-    }
-    
-    @IBAction func pickAnImage(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -111,15 +98,22 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         
     }
     
-    @IBAction func cameraAction(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: nil)
-        }
+    @IBAction func pickAnImage(_ sender: Any) {
+        showImagePicker(imageSourceType: .photoLibrary)
     }
+    
+    @IBAction func cameraAction(_ sender: Any) {
+        showImagePicker(imageSourceType: .camera)
+    }
+    
+    private func showImagePicker(imageSourceType: UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = imageSourceType
+        imagePicker.allowsEditing = true // you can set it true to have an extra in your project
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+
     
     func subscribeToKeybordNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(keybordWillShow(_:)),
@@ -147,8 +141,22 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         // exclude some activity types from the list (optional)
         activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
         
+        activityViewController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
+            if completed {
+                
+                let meme = Meme(topText: self.topText.text, bottomText: self.bottomText.text, originalImage: self.imagePickerView.image, memedImage: image)
+
+                self.saveMeme(meme: meme)
+            }
+        }
+        
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
+
+        
+    }
+    
+    func saveMeme(meme: Meme) {
         
     }
     
@@ -168,13 +176,8 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     func hideTopAndBottomBars(_ hide: Bool) {
-        if hide{
-            topToolbar.isHidden = true
-            bottomToolbar.isHidden = true
-        }else{
-            topToolbar.isHidden = false
-            bottomToolbar.isHidden = false
-        }
+        topToolbar.isHidden = hide
+        bottomToolbar.isHidden = hide
     }
     
     @IBAction func cancelEdit(_ sender: Any) {
@@ -184,6 +187,19 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         
         imagePickerView.image = UIImage()
         
+    }
+    
+    func saveMeme() {
+        
+        // instantiate a meme object
+        let meme = Meme.init(
+            topText: topText.text,
+            bottomText: bottomText.text,
+            originalImage: imagePickerView.image,
+            memedImage: generateMemedImage())
+        
+        // add it to our app's array of memes
+        MemeData.allMemes.append(meme)
     }
     
     

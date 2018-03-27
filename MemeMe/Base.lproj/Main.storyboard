@@ -69,7 +69,7 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ch-o7v">
-                                <rect key="frame" x="85" y="537" width="205" height="60"/>
+                                <rect key="frame" x="0.0" y="537" width="375" height="60"/>
                                 <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -79,7 +79,7 @@
                                 <color key="backgroundColor" red="0.77647584676742554" green="0.77646112442016602" blue="0.77647107839584351" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="HXa-Zo-oXe">
-                                <rect key="frame" x="138" y="88" width="98" height="60"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="60"/>
                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -90,18 +90,20 @@
                             <constraint firstItem="j1t-tP-ctZ" firstAttribute="trailing" secondItem="ycN-6R-np7" secondAttribute="trailing" id="1cu-or-aL9"/>
                             <constraint firstItem="j1t-tP-ctZ" firstAttribute="top" secondItem="Vf9-35-pSV" secondAttribute="bottom" id="5SO-4S-Zge"/>
                             <constraint firstItem="c5O-FX-b1R" firstAttribute="leading" secondItem="Vf9-35-pSV" secondAttribute="leading" id="9Td-07-taa"/>
+                            <constraint firstItem="mhb-ch-o7v" firstAttribute="trailing" secondItem="j1t-tP-ctZ" secondAttribute="trailing" id="9y9-M7-pOQ"/>
                             <constraint firstItem="j1t-tP-ctZ" firstAttribute="leading" secondItem="ycN-6R-np7" secondAttribute="leading" id="DCl-mb-Us4"/>
                             <constraint firstItem="c5O-FX-b1R" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Fda-A6-NGS"/>
                             <constraint firstItem="ycN-6R-np7" firstAttribute="top" secondItem="mhb-ch-o7v" secondAttribute="bottom" constant="22" id="H91-tc-r5C"/>
                             <constraint firstItem="c5O-FX-b1R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MXp-Za-yvY"/>
                             <constraint firstItem="Vf9-35-pSV" firstAttribute="top" secondItem="c5O-FX-b1R" secondAttribute="bottom" id="V34-fv-dss"/>
+                            <constraint firstItem="HXa-Zo-oXe" firstAttribute="leading" secondItem="j1t-tP-ctZ" secondAttribute="leading" id="VDJ-uf-wwN"/>
+                            <constraint firstItem="HXa-Zo-oXe" firstAttribute="trailing" secondItem="j1t-tP-ctZ" secondAttribute="trailing" id="WGZ-bi-bv7"/>
                             <constraint firstItem="ycN-6R-np7" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="YlC-1t-wVu"/>
                             <constraint firstAttribute="trailing" secondItem="c5O-FX-b1R" secondAttribute="trailing" id="c37-u0-Vjn"/>
                             <constraint firstItem="ycN-6R-np7" firstAttribute="top" secondItem="j1t-tP-ctZ" secondAttribute="bottom" id="loH-lr-8Hk"/>
-                            <constraint firstItem="mhb-ch-o7v" firstAttribute="centerX" secondItem="ycN-6R-np7" secondAttribute="centerX" id="mtX-m8-u3P"/>
                             <constraint firstItem="c5O-FX-b1R" firstAttribute="trailing" secondItem="Vf9-35-pSV" secondAttribute="trailing" id="qez-zu-Rt3"/>
-                            <constraint firstItem="Vf9-35-pSV" firstAttribute="centerX" secondItem="HXa-Zo-oXe" secondAttribute="centerX" id="rF1-wb-J4d"/>
-                            <constraint firstItem="HXa-Zo-oXe" firstAttribute="top" secondItem="Vf9-35-pSV" secondAttribute="bottom" constant="16" id="uCk-cK-cRp"/>
+                            <constraint firstItem="mhb-ch-o7v" firstAttribute="leading" secondItem="j1t-tP-ctZ" secondAttribute="leading" id="qp4-eL-WvJ"/>
+                            <constraint firstItem="HXa-Zo-oXe" firstAttribute="top" secondItem="Vf9-35-pSV" secondAttribute="bottom" constant="22" id="uCk-cK-cRp"/>
                             <constraint firstItem="Vf9-35-pSV" firstAttribute="leading" secondItem="j1t-tP-ctZ" secondAttribute="leading" id="upy-cZ-Z0K"/>
                             <constraint firstItem="Vf9-35-pSV" firstAttribute="trailing" secondItem="j1t-tP-ctZ" secondAttribute="trailing" id="vW1-eh-OhQ"/>
                         </constraints>
