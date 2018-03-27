@@ -31,8 +31,8 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         super.viewDidLoad()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        topText.delegate = self
-        bottomText.delegate = self
+        customizeTextField(textField: topText, defaultText: "TOP")
+        customizeTextField(textField: bottomText, defaultText: "BOTTOM")
     }
     
     func customizeTextField(textField: UITextField, defaultText: String) {
@@ -43,6 +43,8 @@ UINavigationControllerDelegate, UITextFieldDelegate{
             NSAttributedStringKey.strokeWidth.rawValue: -5
         ]
         
+        textField.delegate = self
+        textField.adjustsFontSizeToFitWidth = true
         textField.defaultTextAttributes = memeTextAttributes
         textField.text = defaultText
         textField.textAlignment = .center
@@ -60,15 +62,10 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         if textField == topText{
             view.frame.origin.y = 0
         }
-        
-        customizeTextField(textField: textField, defaultText: "")
-        customizeTextField(textField: textField, defaultText: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        topText.adjustsFontSizeToFitWidth = true
-        bottomText.adjustsFontSizeToFitWidth = true
         subscribeToKeybordNotification()
     }
     
@@ -152,11 +149,12 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
+        
     }
     
     func generateMemedImage() -> UIImage {
-        topToolbar.isHidden = true
-        bottomToolbar.isHidden = true
+        
+        hideTopAndBottomBars(true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -164,10 +162,19 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        topToolbar.isHidden = false
-        bottomToolbar.isHidden = false
+        hideTopAndBottomBars(false)
         
         return memedImage
+    }
+    
+    func hideTopAndBottomBars(_ hide: Bool) {
+        if hide{
+            topToolbar.isHidden = true
+            bottomToolbar.isHidden = true
+        }else{
+            topToolbar.isHidden = false
+            bottomToolbar.isHidden = false
+        }
     }
     
     @IBAction func cancelEdit(_ sender: Any) {
