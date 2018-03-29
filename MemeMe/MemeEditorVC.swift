@@ -157,7 +157,17 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     func saveMeme(meme: Meme) {
+        let meme = Meme.init(
+            topText: topText.text,
+            bottomText: bottomText.text,
+            originalImage: imagePickerView.image,
+            memedImage: generateMemedImage())
         
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func generateMemedImage() -> UIImage {
@@ -188,20 +198,6 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         imagePickerView.image = UIImage()
         
     }
-    
-    func saveMeme() {
-        
-        // instantiate a meme object
-        let meme = Meme.init(
-            topText: topText.text,
-            bottomText: bottomText.text,
-            originalImage: imagePickerView.image,
-            memedImage: generateMemedImage())
-        
-        // add it to our app's array of memes
-        MemeData.allMemes.append(meme)
-    }
-    
     
 }
 
