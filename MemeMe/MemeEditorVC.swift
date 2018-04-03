@@ -147,13 +147,13 @@ UINavigationControllerDelegate, UITextFieldDelegate{
                 let meme = Meme(topText: self.topText.text, bottomText: self.bottomText.text, originalImage: self.imagePickerView.image, memedImage: image)
 
                 self.saveMeme(meme: meme)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
 
-        
     }
     
     func saveMeme(meme: Meme) {
@@ -168,6 +168,7 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        
     }
     
     func generateMemedImage() -> UIImage {

@@ -11,37 +11,30 @@ import UIKit
 class ListMemeVC: UITableViewController{
     
     var memes = [Meme]()
+    @IBOutlet var memeTableView: UITableView!
     
     var tableCellReuseIdentifier = "reusableTableCell"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
+        memeTableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath)
+        let cell = memeTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier)!
+        let meme = memes[indexPath.row]
         
-        let currentMeme = memes[indexPath.row]
-//        let  = MemeData.allMemes[indexPath.row]
-        
-        let cellImageView = cell.viewWithTag(1) as! UIImageView
-        cellImageView.image = currentMeme.memedImage
-        
-        let topText = currentMeme.topText
-        let bottomText = currentMeme.bottomText
-        let labelText: String = generateLabelText(topText!, bottomText: bottomText!)
-        
-        let cellLabel = cell.viewWithTag(2) as! UILabel
-        cellLabel.text = labelText
+        // Set the name and image
+        cell.textLabel?.text = generateLabelText(topText: meme.topText, bottomText: meme.bottomText)
+        cell.imageView?.image = meme.memedImage
         
         return cell
     }
@@ -50,7 +43,7 @@ class ListMemeVC: UITableViewController{
     }
     
     
-    func generateLabelText(_ topText: String, bottomText: String) -> String {
+    func generateLabelText(topText: String, bottomText: String) -> String {
         
         let ellipsis = "..."
         
