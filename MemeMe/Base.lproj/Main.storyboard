@@ -20,18 +20,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableTableCell" rowHeight="158" id="tFG-ey-Bfq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableTableCell" rowHeight="158" id="tFG-ey-Bfq" customClass="ListMemeCell" customModule="MemeMe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="158"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tFG-ey-Bfq" id="kpS-J6-XHM">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="157.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocn-Xs-GgB">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocn-Xs-GgB">
                                             <rect key="frame" x="16" y="11" width="160" height="133"/>
                                             <accessibility key="accessibilityConfiguration" identifier="imageView"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="160" id="Epe-NU-nRF"/>
+                                                <constraint firstAttribute="height" constant="133" id="dU7-Yh-A6Y"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuP-kn-wT9" userLabel="labelText">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuP-kn-wT9" userLabel="labelText">
                                             <rect key="frame" x="184" y="11" width="175" height="133"/>
                                             <accessibility key="accessibilityConfiguration" identifier="textLabel"/>
                                             <constraints>
@@ -54,6 +58,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="memeImage" destination="ocn-Xs-GgB" id="G3A-vT-Or2"/>
+                                    <outlet property="memeName" destination="DuP-kn-wT9" id="dUX-K7-3tf"/>
                                     <segue destination="Ddb-dE-oac" kind="show" id="ZgP-aY-Zpl"/>
                                 </connections>
                             </tableViewCell>
@@ -331,6 +337,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WfX-Nf-yeX"/>
+        <segue reference="lYn-Gp-kfZ"/>
     </inferredMetricsTieBreakers>
 </document>

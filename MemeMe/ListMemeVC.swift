@@ -8,6 +8,14 @@
 
 import UIKit
 
+class ListMemeCell: UITableViewCell {
+    
+    @IBOutlet weak var memeImage: UIImageView!
+    @IBOutlet weak var memeName: UILabel!
+
+    
+}
+
 class ListMemeVC: UITableViewController{
     
     var memes = [Meme]()
@@ -29,12 +37,12 @@ class ListMemeVC: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = memeTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier)!
+        let cell = memeTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier) as! ListMemeCell
         let meme = memes[indexPath.row]
         
         // Set the name and image
-        cell.textLabel?.text = generateLabelText(topText: meme.topText, bottomText: meme.bottomText)
-        cell.imageView?.image = meme.memedImage
+        cell.memeName?.text = generateLabelText(topText: meme.topText, bottomText: meme.bottomText)
+        cell.memeImage?.image = meme.memedImage
         
         return cell
     }
