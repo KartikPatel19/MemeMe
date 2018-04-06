@@ -12,7 +12,6 @@ class ListMemeCell: UITableViewCell {
     
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var memeName: UILabel!
-
     
 }
 
