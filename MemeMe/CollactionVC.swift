@@ -8,43 +8,42 @@
 
 import UIKit
 
-private let reuseIdentifier = "reusableCell"
+private let reuseIdentifier = "memeCollectionViewCell"
 
-class collectionMemeCell:UICollectionViewCell{
-    @IBOutlet weak var imageView:UIImageView!
-}
+class CollactionVC: UICollectionViewController{
 
-class CollactionVC: UICollectionViewController {
 
-    var memes = [Meme]()
+    @IBOutlet weak var flowLayoutMeme: UICollectionViewFlowLayout!
     
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView!.register(collectionMemeCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
         let space:CGFloat = 3.0
         let dimension = (view.frame.size.width - (2 * space)) / 3.0
         
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        flowLayoutMeme.minimumInteritemSpacing = space
+        flowLayoutMeme.minimumLineSpacing = space
+        flowLayoutMeme.itemSize = CGSize(width: dimension, height: dimension)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
         collectionView!.reloadData()
+        navigationController?.isNavigationBarHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return memes.count
+        return (UIApplication.shared.delegate as! AppDelegate).memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! collectionMemeCell
-        cell.imageView.image = memes[indexPath.row].memedImage
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
+        let meme = (UIApplication.shared.delegate as! AppDelegate).memes[indexPath.row]
+        cell.imageView.image = meme.memedImage
+        
         return cell
     }
 

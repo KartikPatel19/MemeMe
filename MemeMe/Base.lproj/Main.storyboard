@@ -110,29 +110,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G5T-i1-jrS">
-                            <size key="itemSize" width="127" height="119"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G5T-i1-jrS" customClass="CollectionViewFlowLayout" customModule="MemeMe" customModuleProvider="target">
+                            <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="reusableCell" reuseIdentifier="collectionCell" id="Rgm-fW-Dgj" customClass="collectionMemeCell" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="127" height="119"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="reusableCell" reuseIdentifier="memeCollectionViewCell" id="Rgm-fW-Dgj" customClass="CollectionViewCell" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="127" height="119"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HAb-eP-Nvc">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="119"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HAb-eP-Nvc">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <accessibility key="accessibilityConfiguration" identifier="imageView"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="HAb-eP-Nvc" firstAttribute="leading" secondItem="Rgm-fW-Dgj" secondAttribute="leading" id="6dU-Rs-8Nc"/>
+                                    <constraint firstAttribute="trailing" secondItem="HAb-eP-Nvc" secondAttribute="trailing" id="dux-lK-y6J"/>
+                                    <constraint firstItem="HAb-eP-Nvc" firstAttribute="top" secondItem="Rgm-fW-Dgj" secondAttribute="top" id="hbe-Ew-JJt"/>
+                                    <constraint firstAttribute="bottom" secondItem="HAb-eP-Nvc" secondAttribute="bottom" id="upQ-C6-XSK"/>
+                                </constraints>
                                 <connections>
-                                    <outlet property="imageView" destination="HAb-eP-Nvc" id="lB7-mc-wIX"/>
+                                    <outlet property="imageView" destination="HAb-eP-Nvc" id="hmd-Kr-WUL"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -149,8 +154,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="g9Z-fU-qpi" id="DT3-yy-z4I"/>
-                        <outlet property="flowLayout" destination="G5T-i1-jrS" id="Nzt-dX-KZH"/>
+                        <outlet property="flowLayoutMeme" destination="G5T-i1-jrS" id="6GC-vK-tGR"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKF-Eg-i4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,7 +181,7 @@
         <!--Meme-->
         <scene sceneID="iJK-fJ-Jtf">
             <objects>
-                <viewController id="Ddb-dE-oac" sceneMemberID="viewController">
+                <viewController id="Ddb-dE-oac" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gYJ-k0-uW0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,6 +204,9 @@
                         <viewLayoutGuide key="safeArea" id="sJS-JS-xF6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Meme" id="ENF-mw-XSG"/>
+                    <connections>
+                        <outlet property="imageDetail" destination="9Av-Mq-XZ5" id="Bju-iG-SuF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Naj-Sq-mza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

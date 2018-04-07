@@ -47,6 +47,10 @@ class ListMemeVC: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let memeDetail = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        let meme = (UIApplication.shared.delegate as! AppDelegate).memes[indexPath.row]
+        memeDetail.detailMeme = meme
+        navigationController?.pushViewController(memeDetail, animated: true)
     }
     
     
