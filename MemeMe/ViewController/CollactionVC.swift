@@ -12,12 +12,6 @@ private let reuseIdentifier = "memeCollectionViewCell"
 
 class CollactionVC: UICollectionViewController{
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.collectionView!.register(CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView!.reloadData()
@@ -39,7 +33,7 @@ class CollactionVC: UICollectionViewController{
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CollectionViewCell
         let meme = (UIApplication.shared.delegate as! AppDelegate).memes[indexPath.row]
         cell.imageView.image = meme.memedImage
         
