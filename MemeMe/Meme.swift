@@ -6,7 +6,6 @@
 //  Copyright © 2018 kartik patel. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct Meme {
