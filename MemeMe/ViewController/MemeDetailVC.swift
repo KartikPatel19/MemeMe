@@ -19,5 +19,16 @@ class MemeDetailVC: UIViewController {
         imageDetail.image = detailMeme.memedImage
         tabBarController?.tabBar.isHidden = true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let controller = segue.destination as! MemeEditorVC
+        controller.defaultTopText = detailMeme.topText
+        controller.defaultBottomText = detailMeme.bottomText
+        controller.selectedImage = detailMeme.originalImage
+        
+        controller.cameFromDetail = true
+        
+    }
 
 }

@@ -19,14 +19,18 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
+    var defaultTopText = "TOP"
+    var defaultBottomText = "BOTTOM"
+    var selectedImage: UIImage!
     
+    var cameFromDetail = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        customizeTextField(textField: topText, defaultText: "TOP")
-        customizeTextField(textField: bottomText, defaultText: "BOTTOM")
+        customizeTextField(textField: topText, defaultText: defaultTopText)
+        customizeTextField(textField: bottomText, defaultText: defaultBottomText)
     }
     
     func customizeTextField(textField: UITextField, defaultText: String) {
@@ -54,6 +58,13 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeybordNotification()
+        
+        if cameFromDetail{
+            imagePickerView.image = selectedImage
+            topText.text = defaultTopText
+            bottomText.text = defaultBottomText
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

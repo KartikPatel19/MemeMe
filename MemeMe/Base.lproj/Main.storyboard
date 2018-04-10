@@ -206,7 +206,7 @@
                     <navigationItem key="navigationItem" title="Meme" id="ENF-mw-XSG">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="ETI-n5-st4">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="presentation" id="mib-wU-Mqu"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="detailViewSegueToEditor" id="mib-wU-Mqu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
