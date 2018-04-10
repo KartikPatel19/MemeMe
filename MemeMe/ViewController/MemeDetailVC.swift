@@ -1,5 +1,5 @@
 //
-//  MemeDetailViewController.swift
+//  MemeDetailVC.swift
 //  MemeMe
 //
 //  Created by kartik patel on 07/04/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeDetailViewController: UIViewController {
+class MemeDetailVC: UIViewController {
 
     @IBOutlet weak var imageDetail: UIImageView!
     

@@ -8,8 +8,6 @@
 
 import Foundation
 
-struct MemeData {
-        
+struct MemeData {        
     static var allMemes = [Meme]()
-    
 }

@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableTableCell" rowHeight="158" id="tFG-ey-Bfq" customClass="ListMemeCell" customModule="MemeMe" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableTableCell" rowHeight="158" id="tFG-ey-Bfq" customClass="TableViewCell" customModule="MemeMe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="158"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tFG-ey-Bfq" id="kpS-J6-XHM">
@@ -58,9 +58,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="memeImage" destination="ocn-Xs-GgB" id="G3A-vT-Or2"/>
-                                    <outlet property="memeName" destination="DuP-kn-wT9" id="dUX-K7-3tf"/>
-                                    <segue destination="Ddb-dE-oac" kind="show" id="ZgP-aY-Zpl"/>
+                                    <outlet property="memeImage" destination="ocn-Xs-GgB" id="hcy-zr-xQD"/>
+                                    <outlet property="memeName" destination="DuP-kn-wT9" id="khC-MB-gHm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -204,9 +203,6 @@
                         <viewLayoutGuide key="safeArea" id="sJS-JS-xF6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Meme" id="ENF-mw-XSG"/>
-                    <connections>
-                        <outlet property="imageDetail" destination="9Av-Mq-XZ5" id="Bju-iG-SuF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Naj-Sq-mza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -350,6 +346,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WfX-Nf-yeX"/>
+        <segue reference="lYn-Gp-kfZ"/>
     </inferredMetricsTieBreakers>
 </document>
