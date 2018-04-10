@@ -7,7 +7,9 @@
 
 Create amazing memes on iPhone/iPad and share with your friends.
 
-![](s1.png = 100x)  ![](s2.png = 100x)  ![](s3.png = 100x)
+![](s1.PNG)  
+![](s2.PNG)  
+![](s3.PNG)
 
 ## Installation
 
