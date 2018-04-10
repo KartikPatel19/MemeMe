@@ -18,8 +18,6 @@ class CollactionVC: UICollectionViewController{
         self.collectionView!.register(CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView!.reloadData()
@@ -29,6 +27,14 @@ class CollactionVC: UICollectionViewController{
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (UIApplication.shared.delegate as! AppDelegate).memes.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let memeDetail = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailVC
+        let meme = (UIApplication.shared.delegate as! AppDelegate).memes[indexPath.row]
+        memeDetail.detailMeme = meme
+        navigationController?.pushViewController(memeDetail, animated: true)
+        
     }
     
     

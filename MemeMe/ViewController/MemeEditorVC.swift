@@ -192,12 +192,7 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     
     @IBAction func cancelEdit(_ sender: Any) {
-        
-        topText.text = "TOP"
-        bottomText.text = "BOTTOM"
-        
-        imagePickerView.image = UIImage()
-        
+        self.dismiss(animated: true)
     }
     
 }

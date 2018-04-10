@@ -29,7 +29,7 @@ class ListMemeVC: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = memeTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier) as! ListMemeCell
+        let cell = memeTableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier) as! TableViewCell
         let meme = memes[indexPath.row]
         
         // Set the name and image
@@ -40,7 +40,7 @@ class ListMemeVC: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let memeDetail = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        let memeDetail = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailVC
         let meme = (UIApplication.shared.delegate as! AppDelegate).memes[indexPath.row]
         memeDetail.detailMeme = meme
         navigationController?.pushViewController(memeDetail, animated: true)

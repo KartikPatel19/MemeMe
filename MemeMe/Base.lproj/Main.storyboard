@@ -136,7 +136,7 @@
                                     <constraint firstAttribute="bottom" secondItem="HAb-eP-Nvc" secondAttribute="bottom" id="upQ-C6-XSK"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="imageView" destination="HAb-eP-Nvc" id="hmd-Kr-WUL"/>
+                                    <outlet property="imageView" destination="HAb-eP-Nvc" id="VUG-vx-eeH"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -152,9 +152,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="flowLayoutMeme" destination="G5T-i1-jrS" id="6GC-vK-tGR"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKF-Eg-i4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,29 +177,39 @@
         <!--Meme-->
         <scene sceneID="iJK-fJ-Jtf">
             <objects>
-                <viewController id="Ddb-dE-oac" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailViewController" id="Ddb-dE-oac" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gYJ-k0-uW0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEW-uW-vE1">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEW-uW-vE1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Meme" id="b97-pk-WBi">
                                         <barButtonItem key="backBarButtonItem" title="Back" id="gzm-FB-csc"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Av-Mq-XZ5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Av-Mq-XZ5">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hEW-uW-vE1" firstAttribute="trailing" secondItem="9Av-Mq-XZ5" secondAttribute="trailing" id="9M2-IX-aER"/>
+                            <constraint firstItem="hEW-uW-vE1" firstAttribute="leading" secondItem="9Av-Mq-XZ5" secondAttribute="leading" id="ako-vh-9gP"/>
+                            <constraint firstItem="9Av-Mq-XZ5" firstAttribute="trailing" secondItem="sJS-JS-xF6" secondAttribute="trailing" id="gUh-DS-9NJ"/>
+                            <constraint firstItem="9Av-Mq-XZ5" firstAttribute="bottom" secondItem="sJS-JS-xF6" secondAttribute="bottom" id="jNF-Oh-zI5"/>
+                            <constraint firstItem="9Av-Mq-XZ5" firstAttribute="top" secondItem="hEW-uW-vE1" secondAttribute="bottom" id="mCc-va-kg2"/>
+                            <constraint firstItem="9Av-Mq-XZ5" firstAttribute="leading" secondItem="sJS-JS-xF6" secondAttribute="leading" id="nje-6t-buY"/>
+                            <constraint firstItem="hEW-uW-vE1" firstAttribute="top" secondItem="gYJ-k0-uW0" secondAttribute="top" id="ouU-mJ-bD0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sJS-JS-xF6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Meme" id="ENF-mw-XSG"/>
+                    <connections>
+                        <outlet property="imageDetail" destination="9Av-Mq-XZ5" id="3Tn-8b-Qfl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Naj-Sq-mza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -346,6 +353,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lYn-Gp-kfZ"/>
+        <segue reference="WfX-Nf-yeX"/>
     </inferredMetricsTieBreakers>
 </document>
